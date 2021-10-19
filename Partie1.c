@@ -13,3 +13,7 @@
 #define then
 
 type def enum {false, true} bool;
+
+#include <stdio.h>
+#include <assert.h>
+#include <stdbool.h>
