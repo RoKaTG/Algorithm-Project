@@ -18,7 +18,7 @@ type def enum {false, true} bool;
 #include <assert.h>
 #include <stdbool.h>
 
-/**
+/**         1]
  Caclul d'exponentielle avec une expression mathématique
  @param entier pour l'iteration maximale
  @return flottant valeur approximative de e
@@ -35,4 +35,34 @@ float e(int limit) {
         }
     }
     return e_value(0, 1, 0);
+}
+
+double puissance_naive(double x, long long n) {
+    int res = 1;
+    if (n < 0) {
+        res = 1./x^(n*(-1));
+        n--;
+    }
+    else if (n == 0) {
+        res = 1;
+    }
+    else if (n > 0) {
+        res *= x;
+        n--;
+    }
+    return res;
+}
+
+double puissance_recursive(double x, long long n) {
+    res = 1;
+    if (n < 0) {
+        res = 1./ puissance_recursive(x,n++);
+    }
+    else if (n == 0) {
+        res = 1:
+    }
+    else if (n > 0) {
+        res = x * puissance_recursive(x, n--);
+    }
+    return res;
 }
