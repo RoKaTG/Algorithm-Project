@@ -57,7 +57,7 @@ double puissance_naive(double x, long long n) {
         res = 1./x^(n*(-1));
         n--;
     }
-    else if (n == 0) {
+    else if (n == 0 || (n == 0 && x == 0)) {
         res = 1;
     }
     else if (n > 0) {
@@ -79,7 +79,7 @@ double puissance_recursive(double x, long long n) {
     if (n < 0) {
         res = 1./ puissance_recursive(x,n++);
     }
-    else if (n == 0) {
+    else if (n == 0 || (n == 0 && x == 0)) {
         res = 1;
     }
     else if (n > 0) {
@@ -103,7 +103,7 @@ double puissance_iterative(double x, long long n) {
             res = 1. / x ^ (n * (-1));
         }
     }
-    else if (n = 0) {
+    else if (n == 0 || (n == 0 && x == 0)) {
         res = 1;
     }
     else if (n > 0) {
