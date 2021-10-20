@@ -19,7 +19,10 @@ type def enum {false, true} bool;
 #include <stdbool.h>
 
 int main() {
-
+    e();
+    puissance_naive();
+    puissance_recursive();
+    puissance_iterative();
 }
 
 /**         1]
