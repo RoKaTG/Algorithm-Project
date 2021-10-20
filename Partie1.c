@@ -18,6 +18,10 @@ type def enum {false, true} bool;
 #include <assert.h>
 #include <stdbool.h>
 
+int main() {
+
+}
+
 /**         1]
  Calcul d'exponentielle avec une expression mathématique
  @param int limit, pour l'iteration maximale
@@ -25,16 +29,16 @@ type def enum {false, true} bool;
 */
 
 float e(int limit) {
-    float e_value(int x, int facto, float acc) {
+    float res(int x, int facto, float compteur) {
         if (x > limit) {
-            return acc;
+            return compteur;
         }
         else {
             if (x > 0) facto = facto * x;
-            return e_value (x + 1, facto, acc + (1./(float) facto));
+            return res (x + 1, facto, compteur + (1./(float) facto));
         }
     }
-    return e_value(0, 1, 0);
+    return res(0, 1, 0);
 }
 
 /**         2.1]
