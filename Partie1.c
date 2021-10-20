@@ -19,10 +19,10 @@ type def enum {false, true} bool;
 #include <stdbool.h>
 
 /**         1]
- Caclul d'exponentielle avec une expression mathématique
- @param entier pour l'iteration maximale
+ Calcul d'exponentielle avec une expression mathématique
+ @param int limit, pour l'iteration maximale
  @return flottant valeur approximative de e
-*//
+*/
 
 float e(int limit) {
     float e_value(int x, int facto, float acc) {
@@ -36,6 +36,13 @@ float e(int limit) {
     }
     return e_value(0, 1, 0);
 }
+
+/**         2.1]
+ Calcul d'une puissance de manère naîve
+ @param double x, la base
+ @param longlong n, la puissance
+ @return floattant res, valeur de x^n
+*/
 
 double puissance_naive(double x, long long n) {
     float res = 1.;
@@ -53,6 +60,13 @@ double puissance_naive(double x, long long n) {
     return res;
 }
 
+/**         2.2]
+ Calcul d'une puissance de manère recursive
+ @param double x, la base
+ @param longlong n, la puissance
+ @return floattant res, valeur de x^n
+*/
+
 double puissance_recursive(double x, long long n) {
     float res = 1;
     if (n < 0) {
@@ -66,6 +80,13 @@ double puissance_recursive(double x, long long n) {
     }
     return res;
 }
+
+/**         2.3]
+ Calcul d'une puissance de manère iterative
+ @param double x, la base
+ @param longlong n, la puissance
+ @return floattant res, valeur de x^n
+*/
 
 double puissance_iterative(double x, long long n) {
     float res = 1;
