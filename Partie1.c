@@ -125,3 +125,9 @@ unsigned long int ackermann_recursive(int m, long long n) {
         return ackermann_recursive(m - 1, ackermann_recursive(m, n - 1));
     }
 }
+
+unsigned long int ackermann_iterative(int m, long long n) {
+    if (m == 0) {
+        return n + 1;
+    }
+}
