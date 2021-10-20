@@ -38,7 +38,7 @@ float e(int limit) {
 }
 
 double puissance_naive(double x, long long n) {
-    int res = 1;
+    float res = 1.;
     if (n < 0) {
         res = 1./x^(n*(-1));
         n--;
@@ -54,15 +54,34 @@ double puissance_naive(double x, long long n) {
 }
 
 double puissance_recursive(double x, long long n) {
-    res = 1;
+    float res = 1;
     if (n < 0) {
         res = 1./ puissance_recursive(x,n++);
     }
     else if (n == 0) {
-        res = 1:
+        res = 1;
     }
     else if (n > 0) {
         res = x * puissance_recursive(x, n--);
+    }
+    return res;
+}
+
+double puissance_iterative(double x, long long n) {
+    float res = 1;
+    int i;
+    if (n < 0) {
+        for (i = 1; i >= n; n--) {
+            res = 1. / x ^ (n * (-1));
+        }
+    }
+    else if (n = 0) {
+        res = 1;
+    }
+    else if (n > 0) {
+        for (i = 1); i <= n; n++) {
+            res *= x;
+        }
     }
     return res;
 }
