@@ -113,3 +113,15 @@ double puissance_iterative(double x, long long n) {
     }
     return res;
 }
+
+unsigned long int ackermann_recursive(int m, long long n) {
+    if (m == 0) {
+        return n + 1;
+    }
+    else if (m > 0 && n == 0) {
+        return ackermann_recursive(m - 1, 1);
+    }
+    else if (m > 0 && n > 0) {
+        return ackermann_recursive(m - 1, ackermann_recursive(m, n - 1));
+    }
+}
