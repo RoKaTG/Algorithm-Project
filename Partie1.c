@@ -18,13 +18,12 @@ type def enum {false, true} bool;
 #include <assert.h>
 #include <stdbool.h>
 
-int main() {
-    e();
-    puissance_naive();
-    puissance_recursive();
-    puissance_iterative();
-    ackermann_recursive();
-    ackermann_iterative();
+int main(int argc, char **argv){
+    test_ackermann();
+    ackermann_Rtest();
+    ackermann_Itest();
+    X_test();
+    assert(egal(e(10), 2.718281, 0.000001));
 }
 
 /**         1]
@@ -192,4 +191,84 @@ double X_iterative(unsigned int n) {
         }
     }
     return x;
+}
+
+/**
+ Test de la fonction d'ackermann recursive
+ @param int i
+ @param int j
+ @return char int.
+*/
+
+int ackermann_Rtest(int i, int j) {
+    for(i=1;i<=2;i++) for(j=1;j<=10;j++) {
+            printf("Ackermann recursive(%i,%i)=%i\n",i,j,ackermann_recursive(i,j));
+        }
+    return 0;
+}
+
+/**
+ Test de la fonction d'ackermann iterative
+ @param int i
+ @param int j
+ @return char int.
+*/
+
+int ackermann_Itest(int i, int j) {
+    for(i=1;i<=2;i++) for(j=1;j<=10;j++) {
+            printf("Ackermann iterative(%i,%i)=%i\n",i,j,ackermann_iterative(i,j));
+        }
+    return 0;
+}
+
+/**
+ Calcul de X(100) de manière recursive
+ @param double res1
+ @return double
+*/
+
+double X_R(double res1) {
+    res1 = X_recursive(100);
+}
+
+/**
+ Calcul de X(100) de manière iterative
+ @param double res2
+ @return double
+*/
+
+double X_I(double res2) {
+    res2 = X_iterative(100);
+}
+
+/**
+ Test qui montre si X(100) iterativement est égal à X(100) recursivement
+ @param void
+ @return double
+ @return char erreur
+*/
+
+void X_test(void) {
+    if (res1 == res2) {
+        return res1;
+    }
+    else printf("L'une des deux methodes est fausse !")
+}
+
+/**
+ Test pour verifié l'approximation d'Eleur
+ @param float x
+ @param float y
+ @param float epsilon
+ @return float diff
+*/
+
+bool egal(float x, float y, float epsilon) {
+    float diff = x - y;
+    if (diff >= 0.) {
+        return diff <= epsilon;
+    }
+    else {
+        return - diff <= epsilon;
+    }
 }
