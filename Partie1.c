@@ -23,10 +23,12 @@ int main() {
     puissance_naive();
     puissance_recursive();
     puissance_iterative();
+    ackermann_recursive();
+    ackermann_iterative();
 }
 
 /**         1]
- Calcul d'exponentielle avec une expression mathématique
+ Calcul d'Eumer avec une expression mathématique
  @param int limit, pour l'iteration maximale
  @return flottant valeur approximative de e
 */
@@ -114,6 +116,13 @@ double puissance_iterative(double x, long long n) {
     return res;
 }
 
+/**         3.1]
+ Calcul d'Ackermann de manère recursive
+ @param int m
+ @param longlong n
+ @return unsigned long int
+*/
+
 unsigned long int ackermann_recursive(int m, long long n) {
     if (m == 0) {
         return n + 1;
@@ -126,8 +135,61 @@ unsigned long int ackermann_recursive(int m, long long n) {
     }
 }
 
+/**         3.2]
+ Calcul d'Ackermann de manère iterative
+ @param int m
+ @param longlong n
+ @return unsigned long int
+*/
+
 unsigned long int ackermann_iterative(int m, long long n) {
-    if (m == 0) {
+    while (m == 0) {
         return n + 1;
     }
+     while (m > 0 && n == 0) {
+        do {
+           return ackermann_iterative(m - 1, 1)
+        }
+    }
+     while (m > 0 && n > 0) {
+        do {
+           return ackermann_ierative(m - 1, ackermann_iterative(m, n - 1));
+        }
+    }
+}
+
+/**         4.1]
+ Calcul d'une suite X de manière recursive
+ @param unsignedint n
+ @return double, x valeur de la suite X(n)
+*/
+
+double X_recursive(unsigned int n) {
+    if (n == 0) {
+        return 1;
+    }
+    else if (n > 0) {
+        double x;
+        x = (X_recursive(n- 1 ) + 1) / X_recursive(n - 1);
+    }
+    return x;
+}
+
+/**         4.2]
+ Calcul d'une suite X de manière iterative
+ @param unsignedint n
+ @return double, x valeur de la suite X(n)
+*/
+
+double X_iterative(unsigned int n) {
+    while (n == 0) {
+        return 1;
+    }
+    while (n > 0) {
+        do {
+            double x;
+            x = (X_iterative(n - 1) + 1) / (X_iterative(n - 1);
+        }
+    }
+    return x;
 }
