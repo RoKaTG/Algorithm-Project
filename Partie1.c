@@ -19,7 +19,6 @@ type def enum {false, true} bool;
 #include <stdbool.h>
 
 int main(int argc, char **argv){
-    test_ackermann();
     ackermann_Rtest();
     ackermann_Itest();
     X_test();
@@ -45,7 +44,7 @@ float e(int limit) {
     return res(0, 1, 0);
 }
 
-/**         2.1]
+/**       2.1]
  Calcul d'une puissance de manère naîve
  @param double x, la base
  @param longlong n, la puissance
@@ -108,7 +107,7 @@ double puissance_iterative(double x, long long n) {
         res = 1;
     }
     else if (n > 0) {
-        for (i = 1); i <= n; n++) {
+        for (i = 1; i <= n; n++) {
             res *= x;
         }
     }
@@ -142,19 +141,18 @@ unsigned long int ackermann_recursive(int m, long long n) {
 */
 
 unsigned long int ackermann_iterative(int m, long long n) {
-    while (m == 0) {
+    do {
         return n + 1;
     }
-     while (m > 0 && n == 0) {
-        do {
-           return ackermann_iterative(m - 1, 1)
-        }
+    while (m == 0);
+    do {
+        return ackermann_iterative(m - 1, 1);
     }
-     while (m > 0 && n > 0) {
-        do {
-           return ackermann_ierative(m - 1, ackermann_iterative(m, n - 1));
-        }
+    while (m > 0 && n == 0);
+    do {
+        return ackermann_ierative(m - 1, ackermann_iterative(m, n - 1));
     }
+     while (m > 0 && n > 0);
 }
 
 /**         4.1]
@@ -181,15 +179,15 @@ double X_recursive(unsigned int n) {
 */
 
 double X_iterative(unsigned int n) {
-    while (n == 0) {
+    double x;
+    do {
         return 1;
     }
-    while (n > 0) {
-        do {
-            double x;
-            x = (X_iterative(n - 1) + 1) / (X_iterative(n - 1);
-        }
+    while (n == 0);
+    do {
+        x = (X_iterative(n - 1) + 1) / (X_iterative(n - 1);
     }
+    while (n > 0);
     return x;
 }
 
