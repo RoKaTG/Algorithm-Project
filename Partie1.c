@@ -16,8 +16,6 @@
 #include <assert.h>
 #include <stdbool.h>
 
-type def enum {false, true} bool;
-
 float e(int limit);
 double puissance_naive(double x, long long n);
 double puissance_recursive(double x, long long n);
@@ -30,7 +28,7 @@ int ackermann_Rtest(int i, int j);
 int ackermann_Itest(int i, int j);
 double X_R(double res1);
 double X_I(double res2);
-void X_test(void);
+double X_test(double res1, double res2);
 bool egal(float x, float y, float epsilon);
 
 
