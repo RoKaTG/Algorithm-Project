@@ -102,6 +102,45 @@ double puissance_iterative(double x, long long n) {
     return res;
 }
 
+double puissance1(double x, long long n) {  //Fait n appels, la fonction est de complexité n
+  if (n < 0) {
+    return 1./ puissance1(x,-n);
+  }
+  if (n == 0) {
+    return 1;
+  } else {
+    return puissance1(x, n-1) * x;
+  }
+}
+
+double puissance2(double x, long long n) {  //Fait ln2(n) appels, donc de complexité log
+  if (n < 0) {
+    return 1./ puissance2(x,-n);
+  }
+  if (n == 0) {
+    return 1;
+  } else {
+    double y = puissance2(x, n / 2);
+    if (n%2 == 0) {
+      return y * y;
+    } else {
+      return y * y * x;
+    }
+  }
+}
+
+double puissance3(double x, long long n) { //Il y aenviron ln2(n) iterations.
+  double y = x;
+  int res = 1;
+  while (n != 0) {
+    if (n%2 != 0) {
+      res = res * y;
+      n = n / 2;
+      y = y *y;
+    }
+  }
+  return res;
+}
 /**         3.1]
  Calcul d'Ackermann de manère recursive
  @param int m
@@ -142,6 +181,16 @@ unsigned long int ackermann_iterative(int m, long long n) {
     }
      while (m > 0 && n > 0);
 }
+
+/**Pour A(m,0) m de 0 à 6 :
+A(1,0) = 1
+A(2,0) = 2
+A(3,0) = 3
+A(4,0) = 5
+A(5,0) = 65533
+A(6,0) = A(5,1)
+*/
+
 
 /**         4.1]
  Calcul d'une suite X de manière recursive
