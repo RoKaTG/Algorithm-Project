@@ -5,23 +5,36 @@
 /**************************************************/
 
 
-/* Bibliothéque C et facilité syntaxique */
+/* Bibliothéque C et facilitée syntaxique */
 #define ISNOT !=
 #define NOT !
 #define AND &&
 #define OR ||
 #define then
 
-type def enum {false, true} bool;
-
 #include <stdio.h>
 #include <assert.h>
 #include <stdbool.h>
 
+type def enum {false, true} bool;
+
+float e(int limit);
+double puissance_naive(double x, long long n);
+double puissance_recursive(double x, long long n);
+double puissance_iterative(double x, long long n);
+unsigned long int ackermann_recursive(int m, long long n);
+unsigned long int ackermann_iterative(int m, long long n);
+double X_recursive(unsigned int n);
+double X_iterative(unsigned int n);
+int ackermann_Rtest(int i, int j);
+int ackermann_Itest(int i, int j);
+double X_R(double res1);
+double X_I(double res2);
+void X_test(void);
+bool egal(float x, float y, float epsilon);
+
+
 int main(int argc, char **argv){
-    ackermann_Rtest();
-    ackermann_Itest();
-    X_test();
     assert(egal(e(10), 2.718281, 0.000001));
 }
 
@@ -44,30 +57,7 @@ float e(int limit) {
     return res(0, 1, 0);
 }
 
-/**       2.1]
- Calcul d'une puissance de manère naîve
- @param double x, la base
- @param longlong n, la puissance
- @return floattant res, valeur de x^n
-*/
-
-double puissance_naive(double x, long long n) {
-    float res = 1.;
-    if (n < 0) {
-        res = 1./x^(n*(-1));
-        n--;
-    }
-    else if (n == 0 || (n == 0 && x == 0)) {
-        res = 1;
-    }
-    else if (n > 0) {
-        res *= x;
-        n--;
-    }
-    return res;
-}
-
-/**         2.2]
+/**         2.1]
  Calcul d'une puissance de manère recursive
  @param double x, la base
  @param longlong n, la puissance
@@ -75,15 +65,15 @@ double puissance_naive(double x, long long n) {
 */
 
 double puissance_recursive(double x, long long n) {
-    float res = 1;
+    double res = 1;
     if (n < 0) {
-        res = 1./ puissance_recursive(x,n++);
+        res = 1./ puissance_recursive(x,-n);
     }
     else if (n == 0 || (n == 0 && x == 0)) {
         res = 1;
     }
     else if (n > 0) {
-        res = x * puissance_recursive(x, n--);
+        res = x * puissance_recursive(x, n-1);
     }
     return res;
 }
@@ -96,11 +86,11 @@ double puissance_recursive(double x, long long n) {
 */
 
 double puissance_iterative(double x, long long n) {
-    float res = 1;
+    double res = 1;
     int i;
     if (n < 0) {
         for (i = 1; i >= n; n--) {
-            res = 1. / x ^ (n * (-1));
+            res = 1. / puissance_iterative(x,-n);
         }
     }
     else if (n == 0 || (n == 0 && x == 0)) {
@@ -150,7 +140,7 @@ unsigned long int ackermann_iterative(int m, long long n) {
     }
     while (m > 0 && n == 0);
     do {
-        return ackermann_ierative(m - 1, ackermann_iterative(m, n - 1));
+        return ackermann_iterative(m - 1, ackermann_iterative(m, n - 1));
     }
      while (m > 0 && n > 0);
 }
@@ -168,8 +158,8 @@ double X_recursive(unsigned int n) {
     else if (n > 0) {
         double x;
         x = (X_recursive(n- 1 ) + 1) / X_recursive(n - 1);
+        return x;
     }
-    return x;
 }
 
 /**         4.2]
@@ -185,7 +175,7 @@ double X_iterative(unsigned int n) {
     }
     while (n == 0);
     do {
-        x = (X_iterative(n - 1) + 1) / (X_iterative(n - 1);
+        x = (X_iterative(n - 1) + 1) / (X_iterative(n - 1));
     }
     while (n > 0);
     return x;
@@ -200,7 +190,8 @@ double X_iterative(unsigned int n) {
 
 int ackermann_Rtest(int i, int j) {
     for(i=1;i<=2;i++) for(j=1;j<=10;j++) {
-            printf("Ackermann recursive(%i,%i)=%i\n",i,j,ackermann_recursive(i,j));
+            printf("Recursive");
+            return ackermann_recursive(i,j);
         }
     return 0;
 }
@@ -214,7 +205,8 @@ int ackermann_Rtest(int i, int j) {
 
 int ackermann_Itest(int i, int j) {
     for(i=1;i<=2;i++) for(j=1;j<=10;j++) {
-            printf("Ackermann iterative(%i,%i)=%i\n",i,j,ackermann_iterative(i,j));
+            printf("Iterative");
+            return ackermann_iterative(i,j);
         }
     return 0;
 }
@@ -237,6 +229,7 @@ double X_R(double res1) {
 
 double X_I(double res2) {
     res2 = X_iterative(100);
+    return res2;
 }
 
 /**
@@ -246,11 +239,13 @@ double X_I(double res2) {
  @return char erreur
 */
 
-void X_test(void) {
+double X_test(double res1, double res2) {
+  X_I(res2);
+  X_R(res1);
     if (res1 == res2) {
         return res1;
     }
-    else printf("L'une des deux methodes est fausse !")
+    else return 0;
 }
 
 /**
