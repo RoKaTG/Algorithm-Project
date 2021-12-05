@@ -69,3 +69,31 @@ image Construit_noir() {
   }
   return res;
 }
+
+///////////////////////////////////////////////////////////////////////////////
+/** Pour la clarté du code nous créons les constructeurs suivants : */
+image iHG(image I) {
+  return I->fils[0];
+}
+
+image iHD(image I) {
+  return I->fils[1];
+}
+
+image iBG(image I) {
+  return I->fils[2];
+}
+
+image iBD(image I) {
+  return I->fils[3];
+}
+///////////////////////////////////////////////////////////////////////////////
+
+/**     1.3]
+ Construit une image composées
+  @param image ihg
+  @param image ihd
+  @param image ibg
+  @param image ibd
+  @return image res
+*/
