@@ -38,6 +38,12 @@ typedef struct bloc_image {
 typedef bloc_image *image;
 
 
+/*************************************************/
+/*                                               */
+/*                Fonctions demandées            */
+/*                                               */
+/*************************************************/
+
 /**     1.1]
  Construit une image blanche
  @param non
