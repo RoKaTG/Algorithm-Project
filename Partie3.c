@@ -97,3 +97,11 @@ image iBD(image I) {
   @param image ibd
   @return image res
 */
+
+image Construit_composee(image ihg, image ihd, image ibg, image ibd) {
+  image res = (image)malloc(sizeof(bloc_image));
+  res->toutnoir = false;
+  res->fils[0] = ihg; res->fils[1] = ihd;
+  res->fils[2] = ibg; res->fils[3] = ibd;
+  return res;
+}
