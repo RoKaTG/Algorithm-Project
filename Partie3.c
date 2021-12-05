@@ -88,6 +88,18 @@ image iBD(image I) {
   return I->fils[3];
 }
 ///////////////////////////////////////////////////////////////////////////////
+bool est_blanche(image I) {
+  return I == NULL;
+}
+
+bool est_noire(image I) {
+  return I->toutnoir;
+}
+
+bool est_composee(image I) {
+  return !I->toutnoir;
+}
+///////////////////////////////////////////////////////////////////////////////
 
 /**     1.3]
  Construit une image composées
