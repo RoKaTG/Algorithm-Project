@@ -117,3 +117,45 @@ image Construit_composee(image ihg, image ihd, image ibg, image ibd) {
   res->fils[2] = ibg; res->fils[3] = ibd;
   return res;
 }
+
+
+/**     1.4]
+ Construit une image composées
+  @param image I
+  @return void img
+*/
+
+void afficher_profondeur(image I) {
+  void img(image I, int p) {
+    if (est_blanche(I)) { printf("B%d", p);
+  }
+  else if (est_noire(I)) { printf("N%d", p);
+  }
+  else {
+      printf(".%d", p);
+      for (int i = 0; i < NTREES; i++) {
+        img(sous_image(I, i), p + 1);
+      }
+    }
+  }
+  img(I, 0);
+}
+
+
+/**     1.5]
+ Construit une image composées
+  @param image I
+  @return image construit_composee
+*/
+image copie(image I) {
+  if (est_blanche(I)) {
+    return construit_blanc();
+  }
+  else if (est_noire(I)) {
+    return construit_noir();
+  }
+  else {
+    return construit_composee(copie(iHG(I)), copie(iHD(I)),
+                              copie(iBG(I)), copie(iBD(I)));
+  }
+}
