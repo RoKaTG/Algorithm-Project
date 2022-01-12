@@ -189,7 +189,7 @@ bool EstBlanche(image I) {
 
 
 /**     1.6]
- Construit une image composées
+  Fait une copie de l'image avec la même structure
   @param image I
   @return image construit_composee
 */
@@ -204,5 +204,28 @@ image copie(image I) {
   else {
     return construit_composee(copie(iHG(I)), copie(iHD(I)),
                               copie(iBG(I)), copie(iBD(I)));
+  }
+}
+
+
+/**     1.7]
+  Rend le taux de noire
+  @param image I
+  @return float res
+*/
+
+float aire(image I) {
+  if (est_blanche(I)) {
+    return 0.;
+  }
+  if (est_noire(I)) {
+    return 1.;
+  }
+  else {
+    float res = 0.;
+    for (int i = 0; i < NTREES; i++) {
+      res += aire(sous_image(I, i)) / 4.;
+    }
+    return res;
   }
 }
