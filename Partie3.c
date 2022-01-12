@@ -120,12 +120,12 @@ image Construit_composee(image ihg, image ihd, image ibg, image ibd) {
 
 
 /**     1.4]
- Construit une image composées
+  Affiche une image en 2D
   @param image I
   @return void img
 */
 
-void afficher_profondeur(image I) {
+void afficher(image I) {
   void img(image I, int p) {
     if (est_blanche(I)) { printf("B%d", p);
   }
@@ -143,10 +143,57 @@ void afficher_profondeur(image I) {
 
 
 /**     1.5]
+  Verifie si une image est noire
+  @param image I
+  @return bool res
+*/
+
+bool EstNoire(image I) {
+  if (est_noire(I)) {
+    return true;
+  }
+  else {
+    bool res = true;
+    for (int i = 0; i < NTREES && res; i++) {
+      res = res && EstNoire(sous_image(I, i));
+    }
+  }
+  else if (est_blanche(I)) {
+    return false;
+  }
+    return res;
+  }
+
+
+  /**     1.5]
+    Verifie si une image est blanche
+    @param image I
+    @return bool res
+  */
+
+bool EstBlanche(image I) {
+  if (est_blanche(I)) {
+    return true;
+  }
+  else if (est_noire(I)){
+    return false;
+  }
+  else {
+    bool res = true;
+    for (int i = 0; i < NTREES && res; i++) {
+      res = res && EstBlanche(sous_image(I, i));
+    }
+    return res;
+  }
+}
+
+
+/**     1.6]
  Construit une image composées
   @param image I
   @return image construit_composee
 */
+
 image copie(image I) {
   if (est_blanche(I)) {
     return construit_blanc();
