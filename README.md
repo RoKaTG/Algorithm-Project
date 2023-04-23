@@ -9,15 +9,15 @@ git clone https://github.com/RoKaT/Algorithm-Project.git
 ## Utilisation
 Une fois que vous avez cloné le répertoire du projet, vous pouvez compiler les différents fichiers à l'aide des commandes suivantes :
 ```bash
-gcc question1.c -o question1
-gcc question2.c -o question2
-gcc question3.c -o question3
+gcc Partie1.c -o partie1
+gcc Partie2.c -o partie2
+gcc Partie3.c -o partie3
 ```
 Ensuite, vous pouvez exécuter les différents fichiers pour voir les résultats des questions en utilisant les commandes suivantes :
 ```bash
-./question1
-./question2
-./question3
+./partie1
+./partie2
+./partie3
 ```
 ## Contribuer
 Si vous souhaitez contribuer à ce projet, vous pouvez créer une branche à partir de la branche principale et ouvrir une pull request avec vos modifications une fois que vous avez terminé.
